@@ -1,0 +1,15 @@
+
+node_modules/
+
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# JSON Server 
+db.json.lock
