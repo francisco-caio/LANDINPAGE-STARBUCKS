@@ -2,6 +2,9 @@
 
 Clone responsivo da landing page do Starbucks com consumo de API REST local, desenvolvido 100% no mobile (tablet + teclado físico) como projeto de estudo.
 
+Clique aqui para ver o site funcionando https://francisco-caio.github.io/LANDINPAGE-STARBUCKS/
+
+
 
 ## 🚀 Tecnologias
 
