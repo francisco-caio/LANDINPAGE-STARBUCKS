@@ -53,3 +53,12 @@ npm install -g json-server
 json-server --watch products.json --port 3000
 
 # 5. Abra o index.html no navegador ou live server
+
+##  API REST
+
+Este projeto consome dados via `fetch()` de uma API REST. Durante o desenvolvimento, 
+utilizei **JSON Server** para simular um backend real:
+
+```bash
+# Modo desenvolvimento (API local)
+json-server --watch products.json --port 3000

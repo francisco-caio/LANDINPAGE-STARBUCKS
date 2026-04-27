@@ -9,11 +9,11 @@ mobileBtn.addEventListener('click', () => {
 });
 
 
-// ============================================
-// API REST LOCAL - TRENDING CARDS
-// ============================================
 
-const API_URL = 'http://localhost:3000/trending';
+// API REST LOCAL - TRENDING CARDS
+
+
+const API_URL = './products.json';
 
 // Dados fallback caso API esteja offline (json-server não rodando)
 const FALLBACK_DATA = [
@@ -46,30 +46,26 @@ const FALLBACK_DATA = [
 async function loadTrendingCards() {
   const container = document.getElementById('trendingContainer');
 
-  // Segurança: verifica se elemento existe no HTML
+  //  verifica se elemento existe no HTML
   if (!container) {
-    console.error('❌ Elemento #trendingContainer não encontrado no HTML');
+    console.error('Elemento #trendingContainer não encontrado no HTML');
     return;
   }
 
   try {
-    // 1. BUSCA OS DADOS NA API
+    //  BUSCA OS DADOS NA API
     const resposta = await fetch(API_URL);
 
-    // Verifica se a resposta veio certa (status 200-299)
+    // Verifica se a resposta 
     if (!resposta.ok) {
       throw new Error(`HTTP ${resposta.status}`);
     }
-
-    // 2. CONVERTE JSON PARA OBJETO JAVASCRIPT
-    const dados = await resposta.json();
-
-    // 3. RENDERIZA OS CARDS
-    renderCards(dados, container);
-
+    //  CONVERTE JSON PARA OBJETO JAVASCRIPT
+   const dados = await resposta.json();
+    renderCards(dados.trending, container);
   } catch (erro) {
     // Se der erro (API offline), usa dados locais como fallback
-    console.warn('⚠️ API offline, carregando dados locais:', erro.message);
+    console.warn('API offline, carregando dados locais:', erro.message);
     renderCards(FALLBACK_DATA, container);
   }
 }
@@ -104,18 +100,15 @@ function createCardHTML(item) {
 document.addEventListener('DOMContentLoaded', loadTrendingCards);
 
 
-// ============================================
-// HEADER SCROLL EFFECT (CORRIGIDO)
-// ============================================
+// HEADER SCROLL EFFECT 
+
 
 window.addEventListener('scroll', () => {
   const header = document.getElementById('header');
 
-  // Segurança: só executa se header existir
   if (!header) return;
 
-  // CORREÇÃO: scrollY com Y MAIÚSCULO (não scrolly)
-  // E lógica corrigida: quando scroll > 0, aplica sombra
+
   if (window.scrollY > 0) {
     header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
   } else {
